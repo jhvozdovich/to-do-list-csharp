@@ -1,6 +1,17 @@
 body {
   background-image: url("../Images/background.jpg");
-  background-size: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-repeat: no-repeat;
   margin: 20%;
+}
+
+.box {
+  background: rgba(247, 246, 243, 0.9);
+  border-radius: 5px;
+  border: 5px solid rgb(55, 107, 130);
+  padding: 20px;
+  text-align: center;
 }
