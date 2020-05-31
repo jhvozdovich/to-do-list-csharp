@@ -36,9 +36,12 @@ namespace ToDoList.Controllers
 
     public ActionResult Details(int id)
     {
-    Category thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
-    return View(thisCategory);
-    }   
+      var thisCategory = _db.Categories
+        .Include(category => category.Items)
+        .ThenInclude(join => join.Item)
+        .FirstOrDefault(category => category.CategoryId == id);
+      return View(thisCategory);
+    }
 
     public ActionResult Edit(int id)
     {
@@ -57,17 +60,17 @@ namespace ToDoList.Controllers
     [HttpGet]
     public ActionResult Delete(int id)
     {
-    var thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
-    return View(thisCategory);
+      var thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+      return View(thisCategory);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-    var thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
-    _db.Categories.Remove(thisCategory);
-    _db.SaveChanges();
-    return RedirectToAction("Index");
+      var thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+      _db.Categories.Remove(thisCategory);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
