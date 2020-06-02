@@ -3,14 +3,20 @@
 }
 
 @using ToDoList.Models;
-@model List<ToDoList.Models.Category>;
+@model IEnumerable<ToDoList.Models.Category>
 
-<h1>Categories</h1>
+<h1>Categories for @User.Identity.Name</h1>
 
-
-@foreach(Category category in Model)
+@if (Model.Any())
 {
-  <p>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</p>
+  @foreach(Category category in Model)
+  {
+    <p>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</p>
+  }
+}
+else
+{
+  <p>No categories have been added yet.</p>
 }
 
 <p>@Html.ActionLink("Add new category", "Create")</p>

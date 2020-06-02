@@ -10,6 +10,7 @@
     @Html.LabelFor(model => model.Description)
     @Html.TextBoxFor(model => model.Description)
 
+    //CAN STILL ACCESS OTHER CATEGORIES-update
     @Html.Label("Select category")
     @Html.DropDownList("CategoryId")
 
@@ -19,7 +20,7 @@
     @Html.Label("Due date")
     @Html.TextBoxFor(model => model.DueDate,
       "{0:MM-dd-yyyy}", new { @type = "date"})
-      
+
     <input type="submit" value="Add new task" />
 }
 <p>@Html.ActionLink("Show all items", "Index")</p>

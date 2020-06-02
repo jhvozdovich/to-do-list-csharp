@@ -16,6 +16,8 @@ namespace ToDoList.Models
     public bool Complete { get; set; }
     public DateTime DueDate { get; set; }
 
+    public virtual ApplicationUser User { get; set; }
+
     public ICollection<CategoryItem> Categories { get; }
   }
 }

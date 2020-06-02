@@ -3,14 +3,20 @@
 }
 
 @using ToDoList.Models;
-@model List<ToDoList.Models.Item>;
+@model IEnumerable<ToDoList.Models.Item>
 
-<h1>Items</h1>
+<h1>Items for @User.Identity.Name</h1>
 
-
-@foreach(Item item in Model)
+@if(Model.Any())
 {
-  <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
+  @foreach(Item item in Model)
+  {
+    <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
+  }
+}
+else
+{
+  <p>No items have been added yet!</p>
 }
 
 
