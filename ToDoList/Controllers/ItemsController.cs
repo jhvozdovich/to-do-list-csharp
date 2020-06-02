@@ -60,6 +60,7 @@ namespace ToDoList.Controllers
     {
       if (CategoryId != 0)
       {
+        //REFACTOR SO EDIT DOESN'T AUTO ADD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
       }
       _db.Entry(item).State = EntityState.Modified;

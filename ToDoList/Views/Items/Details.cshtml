@@ -18,6 +18,8 @@ else
   @foreach(var join in Model.Categories)
   {
     <p>@join.Category.Name</p>
+    <p>Due date: @join.Item.DueDate</p>
+    <p>Completed: @join.Item.Complete</p>
     @using (Html.BeginForm("DeleteCategory", "Items"))
     {
       @Html.Hidden("joinId", @join.CategoryItemId)
